@@ -3,7 +3,7 @@
 titlestr='Bay of Bengal Site';
 POINT=[83.5 10];
 
-SITE_ENVIRONMENT_DIR='/usr/local/site-environment/precip/';
+SITE_ENVIRONMENT_DIR='/usr/local/site-environment/precip/data/';
 
 morestate=get(0,'more');
 more off;
