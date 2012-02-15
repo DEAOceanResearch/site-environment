@@ -1,0 +1,96 @@
+%% A very basic document template: 1 inch margins all round, no packages
+%%
+%% $Revision: 1.1 $
+%% $Date: 2012/02/15 14:14:34 $
+%% $Id: site-environment-report-generation.tex,v 1.1 2012/02/15 14:14:34 duncombe Exp $
+%% 
+\documentclass[letterpaper,12pt,oneside]{article}
+\batchmode
+
+% define the page to have 1 inch margins all round 
+% \setlength{\oddsidemargin}{0pt}
+% \setlength{\textwidth}{6.5in}
+% \setlength{\topmargin}{0in}
+% \setlength{\headsep}{0in}
+% \setlength{\headheight}{0in}
+% \setlength{\textheight}{9in}
+
+\usepackage[letterpaper,left=1in,right=1.0in,top=1.0in,bottom=1in]{geometry}
+\usepackage{url}
+
+
+\pagestyle{empty}
+
+\begin{document}
+
+\title{Generate an Environment Report for a Proposed Monitoring
+Site}
+
+\author{Christopher M.\ Duncombe Rae}
+\today
+
+\abstract{When designing a mooring for a proposed monitoring
+site, it is necessary and desirable to know environmental
+conditions and extremes likely to be encountered during the
+deployment period. A suite of software and data sources are
+described, and the technique used to create such an environmental
+report is explained.
+
+\clearpage
+
+\section{Introduction}
+
+\section{Data Sources}
+
+\subsection{Bathymetry}
+
+Bathymetry is obtained from GEBCO, and ETOPO-1. Sites? 
+
+The 
+
+\section{Software Used}
+
+\subsection{Data Archive}
+
+I store all bathymetry files in /usr/local/bathy/ in
+subdirectories etopo1,	etopo2,	etopo5, tbase and	gebco.
+
+
+
+
+
+TOPO	location of the bathymetric source netCDF files
+\url{/usr/local/bathy/etopo1/ETOPO1_Ice_g_gmt4-.grd}
+
+
+\subsection{Step-By-Step Procedure}
+
+Call initialize shell script which will
+
+\begin{itemize}
+\item {
+Create a directory tree 
+
+\begin{tabular}{lll}
+SITE-NAME & & \\
+&  argo & \\
+&  bathy & \\
+&  flux & \\
+&  precip & \\
+&  waves & \\
+&  wind & \\
+\end{tabular}
+}
+
+\item populate the tree with site-environment.tex, Makefile, etc.
+
+\item modified scripts
+with specific site name and latitude and longitude.
+
+
+\subsubsection{Bathymetry}
+
+
+
+
+\end{document}

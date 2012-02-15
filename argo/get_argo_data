@@ -1,0 +1,30 @@
+#! /bin/bash
+
+# use this script to get any argo data files that are not already
+# downloaded. Run this from the toplevel argo directory. Have the
+# subdirs data and inv available. Have inv populated with the
+# latest relevant .txt lists of data files.
+
+SITEPOS=(89 18)
+DIFF=2.5
+
+# awk 'BEGIN{FS=","}$8>=24 && $8<=26 && $9>=-39 && $9<=-37{print $2}' \
+# get data for a 5x5 degree grid
+# awk 'BEGIN{FS=","}$8>=22.5 && $8<=27.5 && $9>=-40.5 && $9<=-35.5{print $2}' \
+
+# data for a 2 degree grid (Bay of Bengal)
+# awk 'BEGIN{FS=","}$8>=17 && $8<=19 && $9>=88 && $9<=90 {print $2}' \
+
+LO1=`echo ${SITEPOS[0]} - $DIFF | bc`
+LO2=`echo ${SITEPOS[0]} + $DIFF | bc`
+
+LA1=`echo ${SITEPOS[1]} - $DIFF | bc`
+LA2=`echo ${SITEPOS[1]} + $DIFF | bc`
+
+# 86.5 91.5 15.5 20.5
+
+( cd data 
+  awk 'BEGIN{FS=","}$8>='$LA1' && $8<='$LA2' && $9>='$LO1' && $9<='$LO2' {print $2}' \
+	../inv/*.txt | xargs  wget -N -np 
+)
+
