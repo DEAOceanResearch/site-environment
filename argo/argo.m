@@ -13,6 +13,11 @@ morestate=get(0,'more');
 more off
 
 
+Lat=10;
+Lon=83.5;
+
+delt=5;
+
 if reload
 
 files=dir([ ARGODATADIR 'nodc_*.nc' ]);
@@ -27,12 +32,17 @@ for j=1:length(files)
 
 	d=loadcdf([ ARGODATADIR files(j).name ]);
 
-if isfield(d,'temperature_adjusted'),
+% TODO: check if lat and long are in the required proximity of the site
+
+
+  if abs(d.longitude-Lon)<=delt/2 && abs(d.latitude-Lat)<=delt/2,
+
+
+    if isfield(d,'temperature_adjusted'),
 	i=i+1;
 	lat(i)=d.latitude;
 	lon(i)=d.longitude;
 
-% TODO: check if lat and long are in the required proximity of the site
 
 	if ischar(d.reference_date_time),
 	    mday0=datenum( [ str2num(d.reference_date_time(1:4).'), ...
@@ -77,9 +87,10 @@ if isfield(d,'temperature_adjusted'),
 	dept(:,i)=z(:);
 
 	
-else
+    else
 	disp(' no fields');
-end
+    end
+  end
 
 end
 J=find(all(isnan(salt)) & all(isnan(temp)) );
@@ -110,17 +121,15 @@ tme(J)=[];
 
 end % reload
 
-Lat=18;
-Lon=89;
-
-delt=5;
-
 I=find( abs(lon-Lon)<delt/2 & abs(lat-Lat)<delt/2 );
 
 rngy=round(minmax(lat(I)).*10)./10;
 rngx=round(minmax(lon(I)).*10)./10;
 
 rng=diff(rngx);
+
+srange=[30.0 35.5];
+trange=[12 30];
 
 H(1)=figure; plot(lon(I),lat(I),'.');
 	% hold on; plot(-38,25,'r*');
@@ -138,21 +147,21 @@ H(2)=figure; plot(dens(:,I)-1000,dept(:,I));
 	title(titlestr);
 
 H(3)=figure; plot(temp(:,I),dept(:,I)); set(gca,'ydir','reverse');
-	axis([12 30 0 250]);
+	axis([trange 0 250]);
 	xlabel('Temperature ( ^\circ{C})');
 	ylabel('Depth (m)');
 	title(titlestr);
 
 H(4)=figure; plot(salt(:,I),dept(:,I)); set(gca,'ydir','reverse');
 	% axis([36.2 37.7 0 250]);
-	axis([30.0 35.2 0 250]);
+	axis([srange  0 250]);
 	xlabel('Salinity');
 	ylabel('Depth (m)');
 	title(titlestr);
 
 H(5)=figure; plot(salt(:,I),temp(:,I));
 	% axis([31.2 35.2 0 32 ]);
-	axis([30.0 35.2 2 32 ]);
+	axis([srange trange ]);
 	hold on; % mybox([36.2 37.7], [16 28], 'k' );
 	ylabel('Temperature ( ^\circ{C})');
 	xlabel('Salinity');
