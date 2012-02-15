@@ -1,6 +1,9 @@
 
 % titlestr='SPURS Site';
 titlestr='Bay of Bengal Site';
+POINT=[83.5 10];
+
+SITE_ENVIRONMENT_DIR='/usr/local/site-environment/precip/';
 
 morestate=get(0,'more');
 more off;
@@ -8,15 +11,15 @@ more off;
 print_them=false;
 print_them=true;
 
-data_loaded=0;
 data_loaded=1;
+data_loaded=0;
 
 if ~data_loaded
 
 H=[];
 
 % files={'gpcp_1dd_v1.1_p1d.199610','gpcp_1dd_v1.1_p1d.199702'};
-files=dir('gpcp_1dd*');
+files=dir([SITE_ENVIRONMENT_DIR 'gpcp_1dd*']);
 
 % n=36;
 n=length(files);
@@ -27,7 +30,7 @@ Spurs=[];
 % for i=1:length(files),
 for i=1:n,
 
-	fid=fopen(files(i).name,'r','ieee-be');
+	fid=fopen([SITE_ENVIRONMENT_DIR files(i).name],'r','ieee-be');
 	disp(files(i).name);
 
 	% header is always 1440 bytes; data is the rest 
@@ -61,8 +64,8 @@ for i=1:n,
 
 	% pick out the site
 	% I=find(lon<-37 & lon>-39);
-	I=between(lon,[88 90]);
-	J=between(lat,[17 19]);
+	I=between(lon,POINT(1)+[-1 1]);
+	J=between(lat,POINT(2)+[-1 1]);
 
 	% calculate the mean over the site
 	spurs=mean(reshape(Precip(I,J,:),length(I)*length(J),ndays));

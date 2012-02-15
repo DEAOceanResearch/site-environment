@@ -1,6 +1,6 @@
 function h=plot_oaflux(filename,t,varname,Ylabel,Title,scl,point)
 
-if ~exist('point','var')~=1, error('Provide sampling point'); end
+if exist('point','var')~=1, error('Provide sampling point'); end
 
 if exist('scl','var')~=1, scl=[]; end;
 if isempty(scl), scl=1; end;
@@ -20,7 +20,9 @@ i=between(wrapTo180(E.lon),point(1)+[-1 1]);
 j=between(E.lat,point(2)+[-1 1]);
 
 % e=reshape(E.evapr(i,j,:,:),4,12,11);
-e=reshape(E.(varname)(i,j,:,:).*scl,4,12,nyrs);
+
+% keyboard
+e=reshape(E.(varname)(i,j,:,:).*scl,length(i)*length(j),12,nyrs);
 
 % time series
 disp([ filename ' ' varname ' ' num2str(minmax(e(:))) ]);
