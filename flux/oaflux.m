@@ -1,9 +1,11 @@
 
-SITE_ENVIRONMENT_DIR='/usr/local/site-environment/flux/'
+SITE_ENVIRONMENT_DIR='/usr/local/site-environment/flux/';
 POINT=[83.5 10];
 
-print_them=true;
 print_them=false;
+print_them=true;
+
+clear H
 
 morestate=get(0,'more');
 more off
@@ -18,7 +20,7 @@ H(1:3)=plot_oaflux(files,t,'evapr', 'Evaporation rate (cm/year)', 'Evaporation',
 files=[ SITE_ENVIRONMENT_DIR 'lh_oaflux.nc'];
 H(end+[1:3])=plot_oaflux(files,t,'lhtfl', 'Monthly Mean (W/m^2)', 'Latent Heat Flux',0.1,POINT);
 
-files=[ SITE_ENVIRONMENT_DIR 'sh_oaflux.nc';
+files=[ SITE_ENVIRONMENT_DIR 'sh_oaflux.nc'];
 H(end+[1:3])=plot_oaflux(files,t,'shtfl','Monthly Mean (W/m^2)', 'Surface Sensible Heat Flux',0.1,POINT);
 
 files=[ SITE_ENVIRONMENT_DIR 'qa_oaflux.nc'];
