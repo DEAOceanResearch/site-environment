@@ -5,6 +5,7 @@
 # subdirs data and inv available. Have inv populated with the
 # latest relevant .txt lists of data files.
 
+SITE_ENVIRONMENT_DIR=/usr/local/site-environment/argo
 SITEPOS=(89 18)
 DIFF=2.5
 
@@ -23,7 +24,7 @@ LA2=`echo ${SITEPOS[1]} + $DIFF | bc`
 
 # 86.5 91.5 15.5 20.5
 
-( cd data 
+( cd $SITE_ENVIRONMENT_DIR/data 
   awk 'BEGIN{FS=","}$8>='$LA1' && $8<='$LA2' && $9>='$LO1' && $9<='$LO2' {print $2}' \
 	../inv/*.txt | xargs  wget -N -np 
 )
