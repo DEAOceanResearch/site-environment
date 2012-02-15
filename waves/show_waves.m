@@ -54,9 +54,12 @@ end
 % J=find(S.NbLatitudes==25);
 % I=find(S.NbLongitudes==wrapTo360(-38));
 
+
+ceilfloor=@(x)([floor(x) ceil(x)]);
+
 % Bay of Bengal
 J=find(S.NbLatitudes==POINT(2));
-I=find(S.NbLongitudes==wrapTo360(POINT(1)));
+I=between(S.NbLongitudes,wrapTo360(ceilfloor(POINT(1))));
 
 % time base
 tb=load([ SITE_ENVIRONMENT_DIR 'tb.dat' ]);
