@@ -1,49 +1,59 @@
 % matlab script
 
+POINT=[83.5 10];
+
+SITE_ENVIRONMENT_DIR='/usr/local/site-environment/wind/qscat/';
 titlestr='Bay of Bengal Site';
+printfigs=false;
 printfigs=true;
 
 morestate=get(0,'more');
 more off
 
-alreadyloaded=1;
+if exist('WD','var')==1,
+	% we guess that the data are already loaded, a long-winded process
+	alreadyloaded=1;
+else
+	alreadyloaded=0; 
+end
 
 if ~alreadyloaded,
 
-files=dir('qscat*');
+	files=dir([ SITE_ENVIRONMENT_DIR 'qscat*']);
 
-% we have to set up some variables, so load one file example to get some of the parameters
-[WS,WD]=get_scat_averaged_v04('qscat_19990724v4');
-[m,n]=size(WS);
+	% we have to set up some variables, so load one file example to get some of the parameters
+	[WS,WD]=get_scat_averaged_v04([ SITE_ENVIRONMENT_DIR 'qscat_19990724v4']);
+	[m,n]=size(WS);
 
-lat=[1:n].*0.25-90.125;
-lon=[1:m]*0.25-0.125;
+	lat=[1:n].*0.25-90.125;
+	lon=[1:m]*0.25-0.125;
 
-% posn=wrapTo360([-39 -37 24 26]);
-posn=wrapTo360([88 90 17 19]);
+	% posn=wrapTo360([-39 -37 24 26]);
+	% posn=wrapTo360([88 90 17 19]);
+	posn=wrapTo360(reshape([[POINT;POINT]+[-1 -1 ; 1 1]],1,[]));
 
-I=between(lon,posn(1:2));
-J=between(lat,posn(3:4));
-
-
-
-DV=nan(3,length(files));
-WS=nan(length(I),length(J),length(files));
-WD=nan(length(I),length(J),length(files));
-SF=nan(length(I),length(J),length(files));
-RR=nan(length(I),length(J),length(files));
-
-for i=1:length(files)
-	[windspd,winddir,scatflag,radrain]=get_scat_averaged_v04(files(i).name);
-	dv=[str2num(files(i).name(7:10)) str2num(files(i).name(11:12)) str2num(files(i).name(13:14))];
+	I=between(lon,posn(1:2));
+	J=between(lat,posn(3:4));
 
 
-	DV(:,i)=dv;
-	WS(:,:,i)=windspd(I,J);
-	WD(:,:,i)=winddir(I,J);
-	SF(:,:,i)=scatflag(I,J);
-	RR(:,:,i)=radrain(I,J);
-end;
+
+	DV=nan(3,length(files));
+	WS=nan(length(I),length(J),length(files));
+	WD=nan(length(I),length(J),length(files));
+	SF=nan(length(I),length(J),length(files));
+	RR=nan(length(I),length(J),length(files));
+
+	for i=1:length(files)
+		[windspd,winddir,scatflag,radrain]=get_scat_averaged_v04([ SITE_ENVIRONMENT_DIR files(i).name ]);
+		dv=[str2num(files(i).name(7:10)) str2num(files(i).name(11:12)) str2num(files(i).name(13:14))];
+
+
+		DV(:,i)=dv;
+		WS(:,:,i)=windspd(I,J);
+		WD(:,:,i)=winddir(I,J);
+		SF(:,:,i)=scatflag(I,J);
+		RR(:,:,i)=radrain(I,J);
+	end;
 
 end %  alreadyloaded
 

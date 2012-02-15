@@ -51,7 +51,8 @@ end;
 fid=fopen(filename,'rb');
 data=fread(fid,mapsiz*numvar,'uint8');
 fclose(fid);
-filename
+disp(['File = ' filename ]);
+
 map=reshape(data,[xdim ydim numvar]);
 
     for ivar=1:numvar,
