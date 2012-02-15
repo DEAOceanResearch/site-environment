@@ -11,8 +11,8 @@ POINT=[83.5 10];
 
 titlestr='Bay of Bengal Site';
 
-print_this=1;
 print_this=0;
+print_this=1;
 
 % of.nc has global wave record
 if exist('S','var')~=1,  S=[]; end;
@@ -66,6 +66,8 @@ tb=load([ SITE_ENVIRONMENT_DIR 'tb.dat' ]);
 
 SWH=(squeeze(S.Grid_0001(J,I,:)));
 SWH(SWH>100)=NaN;
+
+if size(SWH,1)~=1, SWH=mean(SWH); end
 
 % B=S.Grid_0001(115:117,321:323,:);
 % A=reshape(B,9,806);
