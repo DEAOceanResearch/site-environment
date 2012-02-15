@@ -6,8 +6,8 @@ ARGODATADIR='/usr/local/site-environment/argo/data/';
 
 print_this=false;
 print_this=true;
-reload=1; 
 reload=0; 
+reload=1; 
 
 morestate=get(0,'more');
 more off
@@ -16,7 +16,7 @@ more off
 Lat=10;
 Lon=83.5;
 
-delt=5;
+delt=2;
 
 if reload
 
@@ -128,9 +128,10 @@ rngx=round(minmax(lon(I)).*10)./10;
 
 rng=diff(rngx);
 
-srange=[30.0 35.5];
-trange=[12 30];
+srange=[30.0 36.0];
+trange=[12 33];
 
+% chart
 H(1)=figure; plot(lon(I),lat(I),'.');
 	% hold on; plot(-38,25,'r*');
 	hold on; plot(Lon,Lat,'r*');
@@ -139,6 +140,7 @@ H(1)=figure; plot(lon(I),lat(I),'.');
 	ylabel('Latitude');
 	title(titlestr);
 
+% density depth
 H(2)=figure; plot(dens(:,I)-1000,dept(:,I)); 
 	set(gca,'ydir','reverse');
 	axis([17.0 27.0  0 250]);
@@ -146,12 +148,14 @@ H(2)=figure; plot(dens(:,I)-1000,dept(:,I));
 	ylabel('Depth (m)');
 	title(titlestr);
 
+% temperature depth
 H(3)=figure; plot(temp(:,I),dept(:,I)); set(gca,'ydir','reverse');
 	axis([trange 0 250]);
 	xlabel('Temperature ( ^\circ{C})');
 	ylabel('Depth (m)');
 	title(titlestr);
 
+% salinity depth
 H(4)=figure; plot(salt(:,I),dept(:,I)); set(gca,'ydir','reverse');
 	% axis([36.2 37.7 0 250]);
 	axis([srange  0 250]);
@@ -159,9 +163,10 @@ H(4)=figure; plot(salt(:,I),dept(:,I)); set(gca,'ydir','reverse');
 	ylabel('Depth (m)');
 	title(titlestr);
 
+% temperature salinity
 H(5)=figure; plot(salt(:,I),temp(:,I));
 	% axis([31.2 35.2 0 32 ]);
-	axis([srange trange ]);
+	axis([srange 0 33 ]);
 	hold on; % mybox([36.2 37.7], [16 28], 'k' );
 	ylabel('Temperature ( ^\circ{C})');
 	xlabel('Salinity');
