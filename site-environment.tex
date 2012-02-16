@@ -1,0 +1,340 @@
+%% A very basic document template: 1 inch margins all round, no packages
+%%
+%% $Revision: 1.1 $
+%% $Date: 2012/02/16 16:04:13 $
+%% $Id: site-environment.tex,v 1.1 2012/02/16 16:04:13 duncombe Exp $
+%% 
+\documentclass[letterpaper,12pt,oneside]{article}
+\batchmode
+
+% define the page to have 1 inch margins all round 
+% \setlength{\oddsidemargin}{0pt}
+% \setlength{\textwidth}{6.5in}
+% \setlength{\topmargin}{0in}
+% \setlength{\headsep}{0in}
+% \setlength{\headheight}{0in}
+% \setlength{\textheight}{9in}
+
+
+%%%%%%%%%%%%%%%%%%
+% include packages
+%%%%%%%%%%%%%%%%%%
+\usepackage[letterpaper,left=1in,right=1.0in,top=1.0in,bottom=1in]{geometry}
+\usepackage{url}
+
+% some potentially useful packs
+\usepackage{graphicx}
+\usepackage{url}
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+% for the bibliography 
+%%%%%%%%%%%%%%%%%%%%%%
+%% Use one of natbib or apalike (or another)
+% \usepackage[square]{natbib} 
+% \usepackage[square]{apalike} 
+%% set a new line for the references section 
+% \newcommand{\refheading}{Bibliography}
+% \AtBeginDocument{\renewcommand\refname{\large \refheading}}
+%% then define one of 
+% \bibliographystyle{ametsoc}
+% \bibliographystyle{/usr/share/texmf/bibtex/bst/natbib/plainnat.bst}
+% \bibliographystyle{/usr/share/texmf/bibtex/bst/natbib/unsrtnat.bst}
+% \bibliographystyle{unsrtnat}
+
+\newcommand{\degree}{\ensuremath{^\circ}}
+\newcommand{\SPURS}{Bay of Bengal}
+\newcommand{\SitePos}{10\degree{N}; 83.5\degree{E}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% beginning of the document
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagestyle{empty}
+
+\begin{document}
+
+\mbox{ }
+
+\vfill
+\begin{center}
+{\Large\textbf{Bay of Bengal Studies: Pre-cruise
+environmental report}}
+
+\vfill
+
+\vspace{2\baselineskip} 
+Compiled by:\
+
+Chris M.\ Duncombe Rae 
+
+Upper Ocean Processes Group, Woods Hole Oceanographic Institution
+\vspace{2\baselineskip}
+
+\vfill
+February 14, 2012
+\vfill
+\end{center}
+\clearpage
+
+
+\begin{center}
+\large\textbf{Bathymetry}
+\end{center}
+
+
+ Contours from ETOPO-1
+(1-arc-minute gridded data) are  drawn. Multi-beam data are
+not available. The proposed \SPURS{} site (\SitePos) is indicated by the red B (between 3600 and 3650~m
+depth). (a) 4-degree square around site;  contours are drawn at
+250~m intervals. (b) 1-degree square around site; contours are
+drawn at 50~m intervals and annotated at 200m intervals.
+(c) GEBCO 0.8 degree gridded data.
+
+\setlength{\unitlength}{1in}
+
+\begin{picture}(9,5)(0,0)
+% \makebox[3.25in][r]{\includegraphics[width=4.0in]{map.ps}}\raisebox{1.6cm}{\includegraphics[width=4.0in]{zoommap.ps}}
+% \vspace{-0.75in} 
+% \includegraphics[width=4.0in]{gebcomap.ps}
+% \end{center}
+\put(-1,0){\includegraphics[width=4.0in]{map.ps}}}
+\put(3,0.66){\includegraphics[width=4.0in]{zoommap.ps}}
+\put(1,-3.4){\includegraphics[width=4.0in]{gebcomap.ps}}
+
+\end{picture}
+
+\clearpage
+
+\begin{center}
+\large \textbf{Wind Speed}
+\end{center}
+
+% Data at the SPURS site were obtained from SCOW
+% (\url{http://cioss.coas.oregonstate.edu/scow/citation.html})
+% 
+% \vspace{2\baselineskip}
+% \begin{center}
+% \includegraphics[width=4in]{fig_20111204T113318.432483.eps}
+% \end{center}
+% 
+% \clearpage
+% Merged Near Real Time winds were obtained from AVISO at 
+% \url{http://opendap.aviso.oceanobs.com/thredds/dodsC/dataset-nrt-global-merged-mwind}
+% 
+% QuikSCAT Winds from AVISO are confusing me. The numbers are half
+% what the SCOW data suggests, and the variable provided in the NetCDF
+% files is `Modulus Wind Speed' with units `m' and not `m/s' 
+ % that one might expect. Perhaps Modulus means
+% something different than I think but elsewhere Modulus Wind
+% Speed has units `m/s', and other typos appear in the AVISO web
+% pages, so it suggests the units are really `m/s', but why are the
+% numbers half the other source? 
+% 
+% Here are (a) wind speed time series (mean of data points in
+% 2-degree square around
+% SPURS site) (b) Seasonal wind speeds (all data points in 2-degree
+% square around SPURS site) (c) all data in 2-degree square around
+% SPURS site. 
+% 
+% UPDATE: Further on the variable plotted here: It is clearly indicated on the
+% download page that these data are `Modulus Wind Speed' with units `m'.
+% Perhaps they mean SWH computed from wind speed, but that is not what they
+% say on the download page, nor in the header to the NetCDF file. 
+% 
+% \begin{center}
+% \includegraphics[width=4in]{aviso_winds_1.eps}
+% 
+% \includegraphics[width=3.2in]{aviso_winds_2.eps}
+% \includegraphics[width=3.2in]{aviso_winds_3.eps}
+% \end{center}
+% 
+% 
+% 
+% 
+% \clearpage
+QuikSCAT winds were obtained from Remote Sensing Systems (RSS) at  
+\url{http://www.ssmi.com/data/qscat/bmaps_v04/y2009/m11/}
+% These quikscat winds are about same magnitude as SCOW. 
+
+\begin{center}
+\includegraphics[width=4in]{ssmi_fig_1.eps}
+
+\includegraphics[width=3.2in]{ssmi_fig_2.eps}
+\includegraphics[width=3.2in]{ssmi_fig_3.eps}
+\end{center}
+
+\clearpage
+
+\begin{center}
+\large\textbf{Wave Height}
+\end{center}
+
+Significant wave height data from AVISO were found at
+\url{http://www.aviso.oceanobs.com/en/data/products/wind-waves-products/index.html}
+and were downloaded from
+\url{ftp://ftp.aviso.oceanobs.com/pub/oceano/AVISO/wind-wave/nrt/mswh/merged/}. 
+
+The waves data were extracted for the 1x1-degree square at the
+\SPURS{} position
+(\SitePos) and are shown in the Figures.
+
+\vspace{2\baselineskip}
+\includegraphics[width=3in]{waves_fig_1.eps}
+\raisebox{0.1in}{\includegraphics[width=3in]{waves_fig_2.eps}}
+
+\clearpage
+
+
+\begin{center}
+\large\textbf{Flux}
+\end{center}
+
+Product from the WHOI Objectively Analyzed Air-Sea Fluxes (OAFlux) Project was
+obtained \url{http://oaflux.whoi.edu} as NetCDF files consisting of monthly
+means of the following variables:
+ 
+\begin{itemize}
+\item Evaporation
+\item Latent Heat Flux
+\item Surface Sensible Heat Flux
+\item Specific Humidity at 2m
+\item Neutral Wind Speed at 10m
+\item Sea Surface Temperature
+\item Air Temperature at 2m
+\item Net Surface Heat Flux
+\item Net Surface Longwave Radiation Flux
+\item Net Surface Shortwave Radiation Flux
+\end{itemize}
+
+The first seven variables cover an eleven year period from 2000
+to 2010, the last three (qnet, lwr and swr) are over a twelve
+year period from 1996 to 2007.
+
+These are shown below in three figures, as a time series, a monthly mean,
+and a boxplot demonstrating ranges and location. The mean is plotted as a
+green diamond on the boxplot.  The red line indicates the median.
+
+% I applied all obvious scaling from the NetCDF
+% files, and the temperatures and wind values look plausible, but I am not
+% familiar enough with the expected ranges of the other variables to comment
+% about them. 
+
+
+\includegraphics[width=2in]{oafluxfig01.eps}
+\includegraphics[width=2in]{oafluxfig02.eps}
+\includegraphics[width=2in]{oafluxfig03.eps}
+
+\includegraphics[width=2in]{oafluxfig04.eps}
+\includegraphics[width=2in]{oafluxfig05.eps}
+\includegraphics[width=2in]{oafluxfig06.eps}
+
+\includegraphics[width=2in]{oafluxfig07.eps}
+\includegraphics[width=2in]{oafluxfig08.eps}
+\includegraphics[width=2in]{oafluxfig09.eps}
+
+\includegraphics[width=2in]{oafluxfig10.eps}
+\includegraphics[width=2in]{oafluxfig11.eps}
+\includegraphics[width=2in]{oafluxfig12.eps}
+
+\includegraphics[width=2in]{oafluxfig13.eps}
+\includegraphics[width=2in]{oafluxfig14.eps}
+\includegraphics[width=2in]{oafluxfig15.eps}
+
+\includegraphics[width=2in]{oafluxfig16.eps}
+\includegraphics[width=2in]{oafluxfig17.eps}
+\includegraphics[width=2in]{oafluxfig18.eps}
+
+\includegraphics[width=2in]{oafluxfig19.eps}
+\includegraphics[width=2in]{oafluxfig20.eps}
+\includegraphics[width=2in]{oafluxfig21.eps}
+
+\includegraphics[width=2in]{oafluxfig22.eps}
+\includegraphics[width=2in]{oafluxfig23.eps}
+\includegraphics[width=2in]{oafluxfig24.eps}
+
+\includegraphics[width=2in]{oafluxfig25.eps}
+\includegraphics[width=2in]{oafluxfig26.eps}
+\includegraphics[width=2in]{oafluxfig27.eps}
+
+\includegraphics[width=2in]{oafluxfig28.eps}
+\includegraphics[width=2in]{oafluxfig29.eps}
+\includegraphics[width=2in]{oafluxfig30.eps}
+
+
+% \bibliography{./abs,./cmdrrefs}
+
+\clearpage
+
+\begin{center}
+\large\textbf{Precipitation}
+\end{center}
+
+Precipitation data were retrieved from\
+\url{http://www1.ncdc.noaa.gov/pub/data/gpcp/1dd-v1.1/} (directed thereto
+from \url{http://www.gewex.org/gpcpdata.htm}).  Data are for 1-degree
+blocks centered on the half-degree.  Daily precipitation data were
+extracted at the {\SPURS} site (\SitePos) by taking the mean of the
+surrounding four data points, and then manipulating to obtain the monthly
+descriptors. Shown are a time series and monthly mean presentations
+indicating the seasonal variability.
+
+\begin{center}
+\includegraphics[width=3in]{gpcp_fig_1.eps}
+\includegraphics[width=3in]{gpcp_fig_3.eps} 
+
+\includegraphics[width=3in]{gpcp_fig_2.eps}
+\includegraphics[width=3in]{gpcp_fig_4.eps}
+
+\includegraphics[width=3in]{gpcp_fig_5.eps}
+\end{center}
+
+\clearpage
+
+\begin{center}
+\large\textbf{Near-surface Hydrography}
+\end{center}
+
+ARGO data for the two-degree square around \SPURS{} site (\SitePos) were
+obtained from NODC and plotted. Shown are data sites and sample depths;
+vertical temperature, salinity and density; and temperature vs salinity.  Color
+indexed scatter plots of the Temperature and Salinity show vertical T and S
+distribution. 
+
+\begin{center}
+\includegraphics[width=3in]{argo_1_2deg.eps}
+\includegraphics[width=3in]{argo_6_2deg.eps}
+
+\includegraphics[width=3in]{argo_3_2deg.eps} 
+\includegraphics[width=3in]{argo_4_2deg.eps}
+
+\includegraphics[width=3in]{argo_2_2deg.eps}
+\includegraphics[width=3in]{argo_5_2deg.eps} 
+
+\includegraphics[width=3in]{argo_7_2deg.eps}
+\includegraphics[width=3in]{argo_8_2deg.eps} 
+\end{center}
+
+\clearpage
+
+As above for ARGO data within 5-degree square around \SPURS{} site. Otherwise
+as for the 2-degree box around \SPURS{} site.
+
+\begin{center}
+\includegraphics[width=3in]{argo_1_5deg.eps}
+\includegraphics[width=3in]{argo_6_5deg.eps}
+
+\includegraphics[width=3in]{argo_3_5deg.eps} 
+\includegraphics[width=3in]{argo_4_5deg.eps}
+
+\includegraphics[width=3in]{argo_2_5deg.eps}
+\includegraphics[width=3in]{argo_5_5deg.eps} 
+
+\includegraphics[width=3in]{argo_7_5deg.eps}
+\includegraphics[width=3in]{argo_8_5deg.eps} 
+\end{center}
+
+
+\end{document}
+
+% vi: se nowrap tw=0 :
+
