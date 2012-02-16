@@ -5,8 +5,9 @@
 # subdirs data and inv available. Have inv populated with the
 # latest relevant .txt lists of data files.
 
+SITEPOS=(83.5 10)
 SITE_ENVIRONMENT_DIR=/usr/local/site-environment/argo
-SITEPOS=(89 18)
+
 DIFF=2.5
 
 # awk 'BEGIN{FS=","}$8>=24 && $8<=26 && $9>=-39 && $9<=-37{print $2}' \
