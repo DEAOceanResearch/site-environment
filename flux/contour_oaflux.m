@@ -1,6 +1,6 @@
-function h=plot_oaflux(filename,t,varname,Ylabel,Title,scl,point)
+function h=contour_oaflux(filename,t,varname,Ylabel,Title,scl,range)
 
-if exist('point','var')~=1, error('Provide sampling point'); end
+if exist('range','var')~=1, error('Provide sampling area'); end
 
 if exist('scl','var')~=1, scl=[]; end;
 if isempty(scl), scl=1; end;
