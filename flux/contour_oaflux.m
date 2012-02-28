@@ -35,15 +35,22 @@ e=scl.*E.(varname)(i,j,yr(1),yr(2)).';
 h(1)=figure;
 	m_proj('Mercator','latitudes',range(3:4),'longitudes',range(1:2));
 	[cout,H]=m_contourf(E.lon(i),E.lat(j),e);
-
-% keyboard
-
 	m_coast('speckle');
 	m_grid;
 	title(Title);
 	xlabel(Ylabel);
 	[co0,co1]=ecolorbar(e,'bo');
 	set(co1,'position',[0.13 0.08 0.775 0.04]);
+	set(h(1),'paperposition',[[0.0 0.0 8 8]]);
+	% keyboard
+	
+	% [cout,H]=contourf(E.lon(i),E.lat(j),e);
+	% hold on;
+	% coast('i',[],'k');
+	% axis('equal');
+	% xlabel(Ylabel);
+	% title(Title);
+	% [co0,co1]=ecolorbar(e,'bo');
 
 	% colorbar('southoutside');
 	% colorbarf(cout,H,'horiz');
