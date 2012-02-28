@@ -11,7 +11,9 @@ morestate=get(0,'more');
 more off
 
 years=[2000:2010];
-dat=[	reshape(ones(12,1)*years,length(years)*12,1), repmat([1:12].',length(years),1), ones(length(years)*12,1)*15 ]; 
+dat=[	reshape(ones(12,1)*years, length(years)*12,1), repmat([1:12].', ...
+	length(years),1), ones(length(years)*12,1)*15 ]; 
+
 t=datenum(dat);
 
 files= [ SITE_ENVIRONMENT_DIR 'evapr_oaflux.nc'];
