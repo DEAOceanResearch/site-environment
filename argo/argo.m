@@ -128,6 +128,7 @@ rngx=round(minmax(lon(I)).*10)./10;
 
 rng=diff(rngx);
 
+depthrange=[0 250]; 
 srange=[30.0 36.0];
 trange=[12 33];
 
@@ -143,14 +144,14 @@ H(1)=figure; plot(lon(I),lat(I),'.');
 % density depth
 H(2)=figure; plot(dens(:,I)-1000,dept(:,I)); 
 	set(gca,'ydir','reverse');
-	axis([17.0 27.0  0 250]);
+	axis([17.0 27.0  depthrange]);
 	xlabel('Potential Density (kg.m^{-3})');
 	ylabel('Depth (m)');
 	title(titlestr);
 
 % temperature depth
 H(3)=figure; plot(temp(:,I),dept(:,I)); set(gca,'ydir','reverse');
-	axis([trange 0 250]);
+	axis([trange depthrange]);
 	xlabel('Temperature ( ^\circ{C})');
 	ylabel('Depth (m)');
 	title(titlestr);
@@ -158,7 +159,7 @@ H(3)=figure; plot(temp(:,I),dept(:,I)); set(gca,'ydir','reverse');
 % salinity depth
 H(4)=figure; plot(salt(:,I),dept(:,I)); set(gca,'ydir','reverse');
 	% axis([36.2 37.7 0 250]);
-	axis([srange  0 250]);
+	axis([srange  depthrange]);
 	xlabel('Salinity');
 	ylabel('Depth (m)');
 	title(titlestr);
