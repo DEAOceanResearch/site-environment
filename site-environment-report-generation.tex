@@ -1,8 +1,8 @@
 %% A very basic document template: 1 inch margins all round, no packages
 %%
-%% $Revision: 1.2 $
-%% $Date: 2012/02/16 16:04:13 $
-%% $Id: site-environment-report-generation.tex,v 1.2 2012/02/16 16:04:13 duncombe Exp $
+%% $Revision: 1.3 $
+%% $Date: 2012/12/27 16:18:41 $
+%% $Id: site-environment-report-generation.tex,v 1.3 2012/12/27 16:18:41 duncombe Exp $
 %% 
 \documentclass[letterpaper,12pt,oneside]{article}
 \batchmode
@@ -40,13 +40,42 @@ report is explained.
 
 \section{Introduction}
 
+\section{Installation}
+
+Use \path{cvs export -D`fdate` site-environment} to generate a clean version of
+the site environment directory structure from the CVS repositiory without
+generating the CVS administration files. You do not
+want to do \path{cvs checkout} because you are going to be populating the
+structure with data and modifying the templates for the particular site you are
+working with, and inadvertently running \path{cvs ci} will save these changes back to the
+repository. This is probably not what you want to do. 
+
+/Environment Variable
+
+export SITEPOINT=(x y)
+
 \section{Data Sources}
 
 \subsection{Bathymetry}
 
 Bathymetry is obtained from GEBCO, and ETOPO-1. Sites? 
 
+
+
 The 
+multibeam bathymetry is obtained by going to
+\url{http://www.ngdc.noaa.gov/mgg/bathymetry/multibeam.html}\footnote{Checked
+correct
+on 2012-12-20}
+and clicking
+on the Autochart option in the left panel which takes you to
+\url{http://www.ngdc.noaa.gov/autochart/}. Enter email and select the
+region, select options and submit request. An email will alert you when the
+chart of multibeam bathymetry is ready to be downloaded
+as a tar.gz archive. 
+
+For the other bathymetries run the bathy 
+
 
 \section{Software Used}
 
