@@ -2,6 +2,11 @@
 Site Environment Reports
 ========================
 
+This suite of scripts generates an environmental report of conditions and
+extremes, for use in designing moorings and planning cruises in the vicinity  
+of a proposed monitoring
+site.
+
 
 cvs to git 
 ----------
